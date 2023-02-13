@@ -6,7 +6,7 @@ export default function TaskApp() {
   return (
     <>
       <TasksProvider>
-        <h1>Day off in Kyoto</h1>
+        <h1 className='text-red-500 underline'>Day off in Kyoto</h1>
         <AddTask />
         <TaskList />
       </TasksProvider>

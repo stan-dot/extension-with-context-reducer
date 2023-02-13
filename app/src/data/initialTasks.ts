@@ -1,4 +1,4 @@
-import { Task } from './Task';
+import { Task } from '../types/Task';
 
 export const initialTasks: Task[] = [
   { id: 0, text: 'Philosopher’s Path', done: true },

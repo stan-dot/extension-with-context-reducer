@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTasksDispatch } from './TasksContext';
+import { useTasksDispatch } from '../contexts/TasksContext';
 
 let nextId = 3;
 

@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { initialTasks } from "./initialTasks";
-import { Action, Task } from "./Task";
+import { initialTasks } from "../data/initialTasks";
+import { Task } from "../types/Task";
+import { Action } from "../types/Action";
 
 
-export const TasksContext = createContext<Task[]>([]);
-export const TasksDispatchContext = createContext<React.Dispatch<Action>>(null as unknown as React.Dispatch<Action>);
+const TasksContext = createContext<Task[]>([]);
+const TasksDispatchContext = createContext<React.Dispatch<Action>>(null as unknown as React.Dispatch<Action>);
 
 
 export function useTasks() {

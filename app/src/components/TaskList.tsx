@@ -1,6 +1,6 @@
-import { Task } from './Task';
+import { useTasks } from '../contexts/TasksContext';
+import { Task } from '../types/Task';
 import { TaskDisplay } from './TaskDisplay';
-import { useTasks } from './TasksContext';
 
 export default function TaskList() {
 

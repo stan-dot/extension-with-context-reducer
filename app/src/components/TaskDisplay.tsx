@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Task } from './Task';
-import { useTasksDispatch } from './TasksContext';
+import { useTasksDispatch } from '../contexts/TasksContext';
+import { Task } from '../types/Task';
 
 export function TaskDisplay({ task }: { task: Task }) {
   const [isEditing, setIsEditing] = useState(false);

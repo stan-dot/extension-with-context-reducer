@@ -1,11 +1,10 @@
-import { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { initialTasks } from "./initialTasks";
-import { Task } from "./Task";
+import { Action, Task } from "./Task";
 
 
-export const TasksContext = createContext(null);
-// export const TasksContext = createContext<Task[]>([]);
-export const TasksDispatchContext = createContext(null);
+export const TasksContext = createContext<Task[]>([]);
+export const TasksDispatchContext = createContext<React.Dispatch<Action>>(null as unknown as React.Dispatch<Action>);
 
 
 export function useTasks() {
@@ -25,23 +24,23 @@ export function TasksProvider({ children }: any) {
   </TasksContext.Provider>
 }
 
-// export function tasksReducer(tasks: Task[], action) {
-export function tasksReducer(tasks: Task[], action: any) {
+
+export function tasksReducer(tasks: Task[], action: Action): Task[] {
   switch (action.type) {
     case 'added': {
       return [...tasks, {
-        id: action.id,
+        id: action.id!,
         text: action.text,
         done: false
       }];
     }
     case 'changed': {
-      return tasks.map(t => {
-        if (t.id === action.task.id) {
-          return action.task;
-        } else {
-          return t;
+      return tasks.map((t: Task) => {
+        const newTask = action.task;
+        if (!newTask) {
+          throw Error('this action should carry a task ' + action.id ?? action.type)
         }
+        return t.id === newTask.id ? newTask : t;
       });
     }
     case 'deleted': {

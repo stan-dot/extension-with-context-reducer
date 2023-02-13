@@ -4,6 +4,9 @@ export type Task = {
   done: boolean;
 };
 
-type Update = {
-  update:'changed' | 'deleted' | 'added';
- }
+export type Action = {
+  type:'changed' | 'deleted' | 'added';
+  id?: number;
+  text?: any;
+  task?: Task
+};

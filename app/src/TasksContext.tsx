@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { initialTasks } from "./initialTasks";
 import { Task } from "./Task";
 
@@ -6,6 +6,15 @@ import { Task } from "./Task";
 export const TasksContext = createContext(null);
 // export const TasksContext = createContext<Task[]>([]);
 export const TasksDispatchContext = createContext(null);
+
+
+export function useTasks() {
+  return useContext(TasksContext);
+}
+
+export function useTasksDispatch() {
+  return useContext(TasksDispatchContext);
+}
 
 export function TasksProvider({ children }: any) {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);

@@ -1,10 +1,10 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Task } from './Task';
-import { TasksDispatchContext } from './TasksContext';
+import { useTasksDispatch } from './TasksContext';
 
 export function TaskDisplay({ task }: { task: Task }) {
   const [isEditing, setIsEditing] = useState(false);
-  const dispatch = useContext(TasksDispatchContext);
+  const dispatch = useTasksDispatch();
   let taskContent;
   if (isEditing) {
     taskContent = (

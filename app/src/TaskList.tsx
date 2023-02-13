@@ -1,18 +1,15 @@
-import { useContext } from 'react';
 import { Task } from './Task';
 import { TaskDisplay } from './TaskDisplay';
-import { TasksContext } from './TasksContext';
+import { useTasks } from './TasksContext';
 
 export default function TaskList() {
 
-  const tasks = useContext(TasksContext);
+  const tasks = useTasks();
   return (
     <ul>
       {tasks.map((task: Task) => (
         <li key={task.id}>
-          <TaskDisplay
-            task={task}
-          />
+          <TaskDisplay task={task} />
         </li>
       ))}
     </ul>
